@@ -1,7 +1,50 @@
 import * as React from 'react'
 import { useAuth } from './context/auth-provider'
-import GlobalStyles from './styles/global-styles'
 import styled from 'styled-components'
+import './styles/login-styles.css'
+
+const Div = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const StyledForm = styled.form`
+  height: 400px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 7px 13px -7px #000000;
+  padding: 10px;
+  border-radius: 10px;
+  background: #fff;
+`
+
+const Button = styled.button`
+  padding: 5px;
+  font-size: 1em;
+  text-color: #030303;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 3px 3px 13px -7px #000000;
+`
+
+const Input = styled.input`
+  border: none;
+  background: #cddcf5;
+  padding: 10px;
+  border-radius: 5px;
+`
+
+const Label = styled.label`
+  font-size: 1em;
+  font-weight: 500;
+`
 
 function Login() {
   const { login } = useAuth()
@@ -16,43 +59,23 @@ function Login() {
     login(user.value, password.value)
   }
 
-  const StyledDiv = styled.div`
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `
-
-  const StyledForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 20px;
-    background: #e0ddaa;
-  `
-
   return (
     <>
-      <GlobalStyles />
+      <Div>
+        <StyledForm onSubmit={handelSubmit}>
+          <Label style={{ color: 'black' }} htmlFor="user">
+            Usuario
+          </Label>
+          <Input id="user" />
 
-      <StyledDiv>
-        <StyledForm id="loginForm" onSubmit={handelSubmit}>
-          <label htmlFor="user">Usuario</label>
-          <input id="user" />
+          <Label htmlFor="password">Senha</Label>
+          <Input id="password" type="password" />
 
-          <label htmlFor="password">Senha</label>
-          <input id="password" type="password" />
-
-          <button id="button-submit" type="submit">
+          <Button id="button-submit" type="submit">
             Submit
-          </button>
+          </Button>
         </StyledForm>
-      </StyledDiv>
+      </Div>
     </>
   )
 }
