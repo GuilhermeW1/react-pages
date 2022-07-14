@@ -49,17 +49,20 @@ function Nav() {
     <header>
       <Container>
         <h1 style={{ color: '#E0DDAA' }}>Logo</h1>
-        <Switch
-          onChange={toggleTheme}
-          checked={theme.title === 'dark'}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          offHandleColor={'#000'}
-          offColor={'#f0f0f0'}
-          onColor={'#000'}
-          height={20}
-          width={40}
-        />
+        <div>
+          <h5>Theme</h5>
+          <Switch
+            onChange={toggleTheme}
+            checked={theme.title === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            offHandleColor={'#000'}
+            offColor={'#f0f0f0'}
+            onColor={'#000'}
+            height={20}
+            width={40}
+          />
+        </div>
         <NavBar />
       </Container>
     </header>

@@ -27,8 +27,8 @@ function Modal() {
   return (
     <div>
       {isOpen ? (
-        <div id={'backgroupnd'}>
-          <div id={'container'}>
+        <div>
+          <div>
             <div>
               <button onClick={closeModal}>X</button>
             </div>
@@ -52,4 +52,12 @@ function useModal() {
   return isOpen
 }
 
-export { Modal, useModal, ModalProvider }
+function DefaultModal() {
+  return (
+    <ModalProvider>
+      <Modal />
+    </ModalProvider>
+  )
+}
+
+export { Modal, useModal, ModalProvider, DefaultModal }
