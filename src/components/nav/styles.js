@@ -7,10 +7,11 @@ const Button = styled.button`
   margin-right: 10px;
   text-decoration: none;
   padding: 10px;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.5em;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
-  font-family: sans-serif;
+  cursor: pointer;
 `
 
 const Ul = styled.ul`
@@ -31,6 +32,17 @@ const Container = styled.div`
   background: ${props => props.theme.theme.colors.nav};
 `
 
+const Span = styled.span`
+  display: block;
+  font-family: 'Poppins', sans-serif;
+`
+
+const DivTheme = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
 //#141e27
 
-export { Button, Ul, Container }
+export { Button, Ul, Container, Span, DivTheme }

@@ -32,6 +32,11 @@ const Button = styled.button`
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 13px -7px #000000;
+  transition: 0.2s;
+
+  &:hover {
+    background: #cddcf5;
+  }
 `
 
 const Input = styled.input`
@@ -42,7 +47,9 @@ const Input = styled.input`
 `
 
 const Label = styled.label`
-  font-size: 1em;
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 1.5em;
   font-weight: 500;
 `
 

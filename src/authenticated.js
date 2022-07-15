@@ -8,7 +8,7 @@ import { Page } from './screens/page'
 import { Home } from './screens/home'
 import GlobalStyles from './styles/global-styles'
 import { ErrorBoundary } from 'react-error-boundary'
-import { ModalProvider } from './components/modal'
+
 import styled from 'styled-components'
 import { Nav } from './components/nav/index'
 
@@ -37,15 +37,13 @@ function AppRoutes() {
 function Authenticated() {
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <ModalProvider>
-        <GlobalStyles />
-        <Nav />
-        <main>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <AppRoutes />
-          </ErrorBoundary>
-        </main>
-      </ModalProvider>
+      <GlobalStyles />
+      <Nav />
+      <main>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <AppRoutes />
+        </ErrorBoundary>
+      </main>
     </ErrorBoundary>
   )
 }

@@ -16,6 +16,8 @@ const DivContainer = styled.div`
   max-height: 100vh;
   max-width: 100vw;
   justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
 `
 
 function Home() {
@@ -27,14 +29,13 @@ function Home() {
       .then(response => response.json())
       .then(data => {
         setRepositories(data)
-        console.log(data)
       })
   }, [])
 
   return (
     <DivContainer>
       <div>
-        <ul>
+        <ul style={{ listStyle: 'none' }}>
           {repositories.map(repos => {
             return (
               <li key={repos.id}>

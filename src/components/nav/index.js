@@ -4,7 +4,7 @@ import { useAuth } from '../../context/auth-provider'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useTheme } from '../../context/theme-provider'
-import { Button, Ul, Container } from './styles'
+import { Button, Ul, Container, Span, DivTheme } from './styles'
 import Switch from 'react-switch'
 
 function NavBar() {
@@ -17,13 +17,13 @@ function NavBar() {
           <StylesNavLink to="/home">Home</StylesNavLink>
         </li>
         <li>
-          <StylesNavLink to="/teste">Test page</StylesNavLink>
+          <StylesNavLink to="/teste">Test-Page</StylesNavLink>
         </li>
         <li>
           <StylesNavLink to="/page">Page</StylesNavLink>
         </li>
         <li>
-          <Button onClick={logout}>logout</Button>
+          <Button onClick={logout}>Logout</Button>
         </li>
       </Ul>
     </nav>
@@ -38,9 +38,9 @@ const StylesNavLink = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
   padding: 10px;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.5em;
-  font-weight: 500;
-  font-family: sans-serif;
+  font-weight: 600;
 `
 
 function Nav() {
@@ -49,8 +49,8 @@ function Nav() {
     <header>
       <Container>
         <h1 style={{ color: '#E0DDAA' }}>Logo</h1>
-        <div>
-          <h5>Theme</h5>
+        <DivTheme>
+          <Span>Theme</Span>
           <Switch
             onChange={toggleTheme}
             checked={theme.title === 'dark'}
@@ -62,7 +62,7 @@ function Nav() {
             height={20}
             width={40}
           />
-        </div>
+        </DivTheme>
         <NavBar />
       </Container>
     </header>

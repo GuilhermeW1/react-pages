@@ -1,63 +1,56 @@
 import * as React from 'react'
+import { Div } from './styles'
 
 const ModalContext = React.createContext()
 
-function ModalProvider(props) {
+const callAll =
+  (...fns) =>
+  (...args) =>
+    fns.forEach(fn => fn && fn(...args))
+
+function Modal(props) {
   const [isOpen, setIsOpen] = React.useState(false)
+  return <ModalContext.Provider value={[isOpen, setIsOpen]} {...props} />
+}
 
-  const openModal = React.useCallback(() => {
-    setIsOpen(true)
+// eslint-disable-next-line react/prop-types
+function ModalContent({ action, name }) {
+  const [isOpen] = React.useContext(ModalContext)
+
+  return isOpen ? (
+    <Div>
+      <div>
+        <ModalCloseButton>
+          <button>X</button>
+        </ModalCloseButton>
+      </div>
+      <div>
+        <h1>you hav shure to go out?</h1>
+      </div>
+      <div>
+        <ModalCloseButton>
+          <button>Cancel</button>
+        </ModalCloseButton>
+        <ModalCloseButton>
+          <button onClick={action}>{name}</button>
+        </ModalCloseButton>
+      </div>
+    </Div>
+  ) : null
+}
+
+function ModalOpenButton({ children: child }) {
+  const [, setIsOpen] = React.useContext(ModalContext)
+  return React.cloneElement(child, {
+    onClick: callAll(() => setIsOpen(true), child.props.onClick)
   })
+}
 
-  const closeModal = React.useCallback(() => {
-    setIsOpen(false)
+function ModalCloseButton({ children: child }) {
+  const [, setIsOpen] = React.useContext(ModalContext)
+  return React.cloneElement(child, {
+    onClick: callAll(() => setIsOpen(false), child.props.onClick)
   })
-
-  return (
-    <ModalContext.Provider
-      value={{ isOpen, openModal, closeModal }}
-      {...props}
-    />
-  )
 }
 
-function Modal() {
-  const { isOpen, closeModal } = React.useContext(ModalContext)
-
-  return (
-    <div>
-      {isOpen ? (
-        <div>
-          <div>
-            <div>
-              <button onClick={closeModal}>X</button>
-            </div>
-            <div>
-              <h1>you hav shure to go out?</h1>
-            </div>
-            <div>
-              <button onClick={closeModal}>Cancel</button>
-              <button>Confirm</button>
-            </div>
-          </div>
-        </div>
-      ) : null}
-    </div>
-  )
-}
-
-function useModal() {
-  const isOpen = React.useContext(ModalContext)
-  console.log('useModal' + isOpen)
-  return isOpen
-}
-
-function DefaultModal() {
-  return (
-    <ModalProvider>
-      <Modal />
-    </ModalProvider>
-  )
-}
-
-export { Modal, useModal, ModalProvider, DefaultModal }
+export { ModalContent, Modal, ModalCloseButton, ModalOpenButton }
