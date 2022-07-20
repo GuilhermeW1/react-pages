@@ -3,13 +3,13 @@
 
 import * as React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { TesteScreen } from './screens/teste'
-import { Page } from './screens/page'
-import { Home } from './screens/home'
+import TesteScreen from './screens/teste'
+import Page from './screens/page'
+import Home from './screens/home'
 import GlobalStyles from './styles/global-styles'
 import { ErrorBoundary } from 'react-error-boundary'
-
 import styled from 'styled-components'
+
 import { Nav } from './components/nav/index'
 
 const ErrorDiv = styled.div`
@@ -39,14 +39,18 @@ function Authenticated() {
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <GlobalStyles />
       <Nav />
-      <main>
+      <Main>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <AppRoutes />
         </ErrorBoundary>
-      </main>
+      </Main>
     </ErrorBoundary>
   )
 }
+
+const Main = styled.main`
+  margin-top: 5em;
+`
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (

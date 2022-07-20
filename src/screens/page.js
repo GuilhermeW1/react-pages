@@ -4,4 +4,4 @@ function Page() {
   return <h1>skjdhflksjdfkjsdfkjhsdkjfhksjahdfkjsahdf</h1>
 }
 
-export { Page }
+export default Page

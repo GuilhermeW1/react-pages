@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import list from '../utils/fake-database'
 
 // const AddButton = styled.button`
 //   border-radius: 50%;
@@ -12,41 +13,41 @@ import styled from 'styled-components'
 // `
 
 const DivContainer = styled.div`
-  display: flex;
+  display: grid;
   max-height: 100vh;
   max-width: 100vw;
-  justify-content: center;
+  grid-template-columns: auto auto auto;
+  gap: 1em;
+
+  justify-content: space-evenly;
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+`
+
+const Div = styled.div`
+  height: 200px;
+  width: 25vw;
+  margin: 10px;
+  border: 1px solid green;
+  text-align: center;
+  padding: 10px;
 `
 
 function Home() {
-  const [repositories, setRepositories] = React.useState([])
-  //const [error, setError] = React.useState(null)
-
-  React.useEffect(() => {
-    fetch('http://api.github.com/users/GuilhermeW1/repos')
-      .then(response => response.json())
-      .then(data => {
-        setRepositories(data)
-      })
-  }, [])
-
   return (
     <DivContainer>
-      <div>
-        <ul style={{ listStyle: 'none' }}>
-          {repositories.map(repos => {
-            return (
-              <li key={repos.id}>
-                <strong>{repos.name}</strong>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
+      {list.map(item => {
+        return (
+          <Div key={item.id}>
+            <strong>{item.name}</strong>
+            <div>{item.description}</div>
+          </Div>
+        )
+      })}
     </DivContainer>
   )
 }
 
-export { Home }
+export default Home

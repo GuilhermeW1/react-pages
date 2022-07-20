@@ -6,13 +6,31 @@ import styled from 'styled-components'
 import { useTheme } from '../../context/theme-provider'
 import { Button, Ul, Container, Span, DivTheme } from './styles'
 import Switch from 'react-switch'
+import SearchBar from '../searchBar'
 
 function NavBar() {
   const { logout } = useAuth()
+  const { toggleTheme, theme } = useTheme()
 
   return (
     <nav>
       <Ul>
+        <li style={{ marginRight: '10px' }}>
+          <DivTheme>
+            <Span>Theme</Span>
+            <Switch
+              onChange={toggleTheme}
+              checked={theme.title === 'dark'}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              offHandleColor={'#000'}
+              offColor={'#f0f0f0'}
+              onColor={'#000'}
+              height={20}
+              width={40}
+            />
+          </DivTheme>
+        </li>
         <li>
           <StylesNavLink to="/home">Home</StylesNavLink>
         </li>
@@ -44,25 +62,11 @@ const StylesNavLink = styled(NavLink)`
 `
 
 function Nav() {
-  const { toggleTheme, theme } = useTheme()
   return (
     <header>
       <Container>
         <h1 style={{ color: '#E0DDAA' }}>Logo</h1>
-        <DivTheme>
-          <Span>Theme</Span>
-          <Switch
-            onChange={toggleTheme}
-            checked={theme.title === 'dark'}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            offHandleColor={'#000'}
-            offColor={'#f0f0f0'}
-            onColor={'#000'}
-            height={20}
-            width={40}
-          />
-        </DivTheme>
+        <SearchBar />
         <NavBar />
       </Container>
     </header>

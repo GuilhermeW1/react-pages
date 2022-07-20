@@ -24,6 +24,11 @@ const Ul = styled.ul`
 `
 
 const Container = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   height: 60px;
