@@ -36,4 +36,11 @@ const list = [
   }
 ]
 
-export default list
+const ACTIONS = {
+  ADD_FRUIT: 'add-fruit',
+  DELETE_FRUIT: 'delete-fruit',
+  ALTER_FRUIT: 'alter-fruit',
+  RESET_FRUIT: 'reset'
+}
+
+export { list, ACTIONS }

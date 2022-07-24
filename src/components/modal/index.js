@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Div } from './styles'
+import { Div, DivAlign, Button } from './styles'
 
 const ModalContext = React.createContext()
 
@@ -13,28 +13,23 @@ function Modal(props) {
   return <ModalContext.Provider value={[isOpen, setIsOpen]} {...props} />
 }
 
-// eslint-disable-next-line react/prop-types
-function ModalContent({ action, name }) {
-  const [isOpen] = React.useContext(ModalContext)
+// eslint-disable-next-line react/prop-types, no-unused-vars
+function ModalContent({ action, children, ...props }) {
+  const [isOpen, setIsOpen] = React.useContext(ModalContext)
+
+  function stopPropagation(event) {
+    event.stopPropagation()
+  }
 
   return isOpen ? (
-    <Div>
-      <div>
+    <Div {...props} onClick={() => setIsOpen(false)}>
+      <DivAlign onClick={stopPropagation}>
         <ModalCloseButton>
-          <button>X</button>
+          <Button>X</Button>
         </ModalCloseButton>
-      </div>
-      <div>
-        <h1>you hav shure to go out?</h1>
-      </div>
-      <div>
-        <ModalCloseButton>
-          <button>Cancel</button>
-        </ModalCloseButton>
-        <ModalCloseButton>
-          <button onClick={action}>{name}</button>
-        </ModalCloseButton>
-      </div>
+
+        <div>{children}</div>
+      </DivAlign>
     </Div>
   ) : null
 }
@@ -53,4 +48,12 @@ function ModalCloseButton({ children: child }) {
   })
 }
 
-export { ModalContent, Modal, ModalCloseButton, ModalOpenButton }
+function useModal() {
+  const context = React.useContext(ModalContext)
+  if (context === undefined) {
+    throw new Error('useModal have to be used With modal')
+  }
+  return context
+}
+
+export { ModalContent, Modal, ModalCloseButton, ModalOpenButton, useModal }

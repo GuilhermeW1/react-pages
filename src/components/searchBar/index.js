@@ -1,12 +1,16 @@
 import * as React from 'react'
-import list from '../../utils/fake-database'
+import { useList } from '../../context/list'
+import { BsSearch } from 'react-icons/bs'
+import { Div, Form, Input, DivSearch, Button, DivSearched } from './styles'
 
 function SearchBar() {
+  const [list] = useList()
   const [search, setSearch] = React.useState('')
   const [searchedList, setSearchedList] = React.useState(null)
 
   const handleSearch = e => {
     e.preventDefault()
+    setSearch('')
   }
 
   React.useEffect(() => {
@@ -21,33 +25,41 @@ function SearchBar() {
       })
       return listMatch
     }
+
     const listItems = searchInList()
     setSearchedList(listItems)
   }, [search])
 
-  const handleChange = e => {
+  const handleChange = React.useCallback(e => {
     setSearch(e.target.value)
-  }
+  }, [])
 
   return (
-    <div>
-      <form onSubmit={handleSearch} style={{ position: 'relative' }}>
-        <input
-          type="text"
-          placeholder="search"
-          onChange={handleChange}
-          value={search}
-        />
-        <button type="submit">p</button>
-      </form>
-      <ul style={{ position: 'absolute' }}>
-        {searchedList
-          ? searchedList.map(listItem => {
-              return <li key={listItem.id}>{listItem.name}</li>
-            })
-          : null}
-      </ul>
-    </div>
+    <Div>
+      <Form onSubmit={handleSearch}>
+        <DivSearch>
+          <Input
+            type="text"
+            placeholder="search"
+            onChange={handleChange}
+            value={search}
+          />
+          <Button type="submit">
+            <BsSearch size="20" />
+          </Button>
+        </DivSearch>
+
+        {searchedList && searchedList.length > 0 ? (
+          <DivSearched>
+            {searchedList.map(listItem => {
+              return <div key={listItem.id}>{listItem.name}</div>
+            })}
+          </DivSearched>
+        ) : search ? (
+          <DivSearched>nothing found with the key: {search}</DivSearched>
+        ) : null}
+      </Form>
+    </Div>
   )
 }
 
