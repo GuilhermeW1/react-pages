@@ -36,7 +36,7 @@ function SearchBar() {
 
   return (
     <Div>
-      <Form onSubmit={handleSearch}>
+      <Form onSubmit={handleSearch} aria-label="search-form">
         <DivSearch>
           <Input
             type="text"
@@ -56,7 +56,9 @@ function SearchBar() {
             })}
           </DivSearched>
         ) : search ? (
-          <DivSearched>nothing found with the key: {search}</DivSearched>
+          <DivSearched role="alert">
+            nothing found with the key: {search}
+          </DivSearched>
         ) : null}
       </Form>
     </Div>
