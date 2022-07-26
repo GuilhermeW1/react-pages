@@ -5,7 +5,7 @@ import SearchBar from '../index'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-test('search items how exist in list', () => {
+test('search items that exist in list', () => {
   render(<SearchBar />)
   expect(screen.getByRole('textbox')).toBeInTheDocument()
   expect(screen.getByRole('textbox')).toHaveTextContent('')
@@ -28,5 +28,4 @@ test('search button clean the input when pressed', () => {
   userEvent.type(screen.getByRole('textbox'), 'orange')
   userEvent.click(screen.getByRole('button', { type: 'submit' }))
   expect(screen.getByRole('textbox')).toHaveTextContent('')
-  screen.debug()
 })
