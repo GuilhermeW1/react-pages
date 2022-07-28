@@ -17,13 +17,28 @@ const Button = styled.button`
 const Ul = styled.ul`
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   margin-right: 10px;
   list-style: none;
   height: 100%;
+  line-height: normal;
+
+  @media (max-width: 768px) {
+    padding: 20px 20px;
+    flex-flow: column nowrap;
+    position: fixed;
+    align-items: start;
+    justify-content: start;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background: black;
+    width: 300px;
+    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
+  }
 `
 
-const Container = styled.div`
+const NavB = styled.nav`
   position: fixed;
   width: 100%;
   z-index: 2;
@@ -50,4 +65,4 @@ const DivTheme = styled.div`
 `
 //#141e27
 
-export { Button, Ul, Container, Span, DivTheme }
+export { Button, Ul, NavB, Span, DivTheme }

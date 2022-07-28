@@ -5,6 +5,7 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 300px;
 `
 
 const DivSearch = styled.div`
