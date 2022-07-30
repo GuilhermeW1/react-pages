@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useModal } from '../modal/index'
 import { ACTIONS } from '../../utils/fake-database'
-import { Div } from './style'
+import { Div, Container, Label, Input, Button } from './style'
 
 // eslint-disable-next-line , react/prop-types
 function AddFruitForm({ dispatch }) {
@@ -20,13 +20,15 @@ function AddFruitForm({ dispatch }) {
 
   return (
     <form onSubmit={handelSubmit}>
-      <label htmlFor="fruit">Fruit name</label>
-      <input id="fruit" />
+      <Container>
+        <Label htmlFor="fruit">Fruit name</Label>
+        <Input id="fruit" type="text" />
 
-      <label htmlFor="description">description</label>
-      <input id="description" />
+        <Label htmlFor="description">Description</Label>
+        <Input id="description" type="text" />
 
-      <button type="submit">submit</button>
+        <Button type="submit">submit</Button>
+      </Container>
     </form>
   )
 }

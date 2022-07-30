@@ -13,12 +13,13 @@ const Div = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0.9;
+  opacity: 0.97;
 `
 
 const DivAlign = styled.div`
   display: flex;
-
+  opacity: 1;
+  background: ${props => props.theme.theme.colors.background};
   align-items: center;
   flex-direction: column;
   width: 300px;
