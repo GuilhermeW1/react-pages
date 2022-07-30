@@ -38,10 +38,6 @@ const StylesNavLink = styled(NavLink)`
   font-family: 'Poppins', sans-serif;
   font-size: 1.5em;
   font-weight: 600;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
 `
 
 export default NavLinks

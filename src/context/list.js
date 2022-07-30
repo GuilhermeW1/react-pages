@@ -15,7 +15,7 @@ function reducer(fruit, action) {
       return [...fruit, newFruit(action.payload.fruitValues)]
 
     case ACTIONS.DELETE_FRUIT:
-      return fruit
+      return fruit.filter(fruit => fruit.id !== action.payload.id)
     default:
       return fruit
   }

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useModal } from '../modal/index'
 import { ACTIONS } from '../../utils/fake-database'
+import { Div } from './style'
 
 // eslint-disable-next-line , react/prop-types
 function AddFruitForm({ dispatch }) {
@@ -30,4 +31,17 @@ function AddFruitForm({ dispatch }) {
   )
 }
 
-export { AddFruitForm }
+// eslint-disable-next-line react/prop-types
+const FruitItem = ({ children, dispatch, id }) => {
+  function handleDelete() {
+    dispatch({ type: ACTIONS.DELETE_FRUIT, payload: { id: id } })
+  }
+  return (
+    <Div>
+      {children}
+      <button onClick={handleDelete}>delete</button>
+    </Div>
+  )
+}
+
+export { AddFruitForm, FruitItem }
