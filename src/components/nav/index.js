@@ -8,6 +8,7 @@ import SearchBar from '../searchBar'
 
 function Nav() {
   const { toggleTheme, theme } = useTheme()
+  console.log('nav')
   return (
     <header>
       <NavB>
