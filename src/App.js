@@ -5,7 +5,13 @@ import { useAuth } from './context/auth-provider'
 
 function App() {
   const { user } = useAuth()
-  return user ? <Authenticated /> : <Login />
+  return user ? (
+    <React.StrictMode>
+      <Authenticated />
+    </React.StrictMode>
+  ) : (
+    <Login />
+  )
 }
 
 export default App

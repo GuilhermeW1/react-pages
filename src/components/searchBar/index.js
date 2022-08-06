@@ -5,7 +5,7 @@ import { Div, Form, Input, DivSearch, Button, DivSearched } from './styles'
 
 function SearchBar() {
   const [list] = useList()
-  const [search, setSearch] = React.useState('')
+  const [searchWord, setSearch] = React.useState('')
 
   const handleSearch = e => {
     e.preventDefault()
@@ -15,13 +15,13 @@ function SearchBar() {
   function searchInList() {
     const listMatch = list.filter(el => {
       const listItem = el.name.toLowerCase()
-      const searchWord = search.toLowerCase()
-      return listItem.includes(searchWord)
+      const word = searchWord.toLowerCase()
+      return listItem.includes(word)
     })
     return listMatch
   }
 
-  const listItems = search.length > 0 ? searchInList() : null
+  const listItems = searchWord.length > 0 ? searchInList() : null
 
   const handleChange = React.useCallback(e => {
     setSearch(e.target.value)
@@ -35,7 +35,7 @@ function SearchBar() {
             type="text"
             placeholder="search"
             onChange={handleChange}
-            value={search}
+            value={searchWord}
           />
           <Button type="submit">
             <BsSearch size="20" />
@@ -48,9 +48,9 @@ function SearchBar() {
               return <div key={listItem.id}>{listItem.name}</div>
             })}
           </DivSearched>
-        ) : search ? (
+        ) : searchWord ? (
           <DivSearched role="alert">
-            nothing found with the key: {search}
+            nothing found with the key: {searchWord}
           </DivSearched>
         ) : null}
       </Form>
