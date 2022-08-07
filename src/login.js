@@ -55,12 +55,14 @@ const Label = styled.label`
 
 function Login() {
   const { login } = useAuth()
+  const [disabled, setDisabled] = React.useState(false)
 
   React.useEffect(() => {
     window.history.pushState({}, '', '/home')
   })
 
   function handelSubmit(event) {
+    setDisabled(true)
     event.preventDefault()
     const { user, password } = event.target.elements
     login(user.value, password.value)
@@ -73,12 +75,12 @@ function Login() {
           <Label style={{ color: 'black' }} htmlFor="user">
             Usuario
           </Label>
-          <Input id="user" />
+          <Input id="user" required />
 
           <Label htmlFor="password">Senha</Label>
-          <Input id="password" type="password" />
+          <Input id="password" type="password" required />
 
-          <Button id="button-submit" type="submit">
+          <Button id="button-submit" type="submit" disabled={disabled}>
             Submit
           </Button>
         </StyledForm>

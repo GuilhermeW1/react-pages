@@ -6,9 +6,19 @@ import { Div, Container, Label, Input, Button } from './style'
 // eslint-disable-next-line , react/prop-types
 function AddFruitForm({ dispatch }) {
   const [, setIsOpen] = useModal()
+  const [disabled, setDisabled] = React.useState(false)
 
-  function handelSubmit(e) {
+  //this is just to simulate some async save in db with some time
+  function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+  }
+
+  async function handelSubmit(e) {
+    //i don`t know if its better to setDisabled first or preventDefault first '-'
+    setDisabled(true)
     e.preventDefault()
+    await delay(1000)
+
     const { fruit, description } = e.target.elements
     const fruitValues = {
       fruit: fruit.value,
@@ -22,12 +32,14 @@ function AddFruitForm({ dispatch }) {
     <form onSubmit={handelSubmit}>
       <Container>
         <Label htmlFor="fruit">Fruit name</Label>
-        <Input id="fruit" type="text" />
+        <Input id="fruit" type="text" required />
 
         <Label htmlFor="description">Description</Label>
-        <Input id="description" type="text" />
+        <Input id="description" type="text" required />
 
-        <Button type="submit">submit</Button>
+        <Button type="submit" disabled={disabled}>
+          submit
+        </Button>
       </Container>
     </form>
   )
