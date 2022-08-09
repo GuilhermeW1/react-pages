@@ -7,6 +7,6 @@ export default {
     search: '#3f3f3f',
     extra: '#f9f9f9',
     text: '#ffffff',
-    alt: '#fefefe'
-  }
+    alt: '#fefefe',
+  },
 }

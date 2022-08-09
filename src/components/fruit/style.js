@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-
+import styled, { keyframes } from 'styled-components'
+import { FaSpinner } from 'react-icons/fa'
 const Div = styled.div`
   height: 200px;
   width: 25vw;
@@ -37,8 +37,20 @@ const Button = styled.button`
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   border: 1px solid black;
-  background: ${props => props.theme.theme.colors.nav}
-  color: ${props => props.theme.theme.colors.text};
+  background: ${props => props.theme.theme.colors.alt};
+  color: ${props => props.theme.theme.colors.background};
 `
 
-export { Div, Container, Label, Input, Button }
+const spin = keyframes({
+  '0%': { transform: 'rotate(0deg)' },
+  '100%': { transform: 'rotate(360deg)' },
+})
+
+const Spinner = styled(FaSpinner)`
+  animation: ${spin} 1s linear infinite;
+`
+Spinner.defaultProps = {
+  'aria-label': 'loading',
+}
+
+export { Div, Container, Label, Input, Button, Spinner }

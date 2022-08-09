@@ -14,7 +14,7 @@ function render(children) {
       <ThemeProv>
         <ListProvider>{children}</ListProvider>
       </ThemeProv>
-    </BrowserRouter>
+    </BrowserRouter>,
   )
 }
 

@@ -17,7 +17,7 @@ test('default behavior of modal', () => {
       <ModalContent>
         <div>test content</div>
       </ModalContent>
-    </Modal>
+    </Modal>,
   )
 
   expect(screen.getByRole('button', { name: anyName })).toBeInTheDocument()

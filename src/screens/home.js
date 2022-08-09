@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { useList } from '../context/list'
 import { Modal, ModalOpenButton, ModalContent } from '../components/modal/index'
-import { AddFruitForm, FruitItem } from '../components/fruit/index'
+import { AddFruitForm, RenderFruits } from '../components/fruit/index'
 
 const AddButton = styled.button`
   z-index: 1;
@@ -42,14 +42,15 @@ function Home() {
 
   return (
     <DivContainer>
-      {fruit.map(item => {
+      <RenderFruits list={fruit} dispatch={dispatch} />
+      {/* {fruit.map(item => {
         return (
           <FruitItem dispatch={dispatch} key={item.id} id={item.id}>
             <strong>{item.name}</strong>
             <div>{item.description}</div>
           </FruitItem>
         )
-      })}
+      })} */}
       <Modal>
         <ModalOpenButton>
           <AddButton>

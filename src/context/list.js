@@ -25,7 +25,7 @@ function newFruit(fruit) {
   return {
     id: Date.now(),
     name: fruit.fruit,
-    description: fruit.description
+    description: fruit.description,
   }
 }
 
@@ -48,4 +48,4 @@ function useList() {
   return context
 }
 
-export { ListProvider, useList }
+export { ListProvider, useList, reducer }

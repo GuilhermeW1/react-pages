@@ -19,7 +19,7 @@ test('search item that not exist in the list', () => {
   const stringWhoNotExistInList = 'fsadlfksf'
   userEvent.type(screen.getByRole('textbox'), stringWhoNotExistInList)
   expect(screen.getByRole('alert')).toHaveTextContent(
-    `nothing found with the key: ${stringWhoNotExistInList}`
+    `nothing found with the key: ${stringWhoNotExistInList}`,
   )
 })
 
