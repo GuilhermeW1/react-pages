@@ -22,7 +22,7 @@ function ModalContent({ action, children, ...props }) {
   }
 
   return isOpen ? (
-    <Div {...props} onClick={() => setIsOpen(false)}>
+    <Div {...props} onClick={() => setIsOpen(false)} data-testid="modal">
       <DivAlign onClick={stopPropagation}>
         <ModalCloseButton>
           <Button>X</Button>

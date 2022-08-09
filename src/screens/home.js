@@ -43,14 +43,6 @@ function Home() {
   return (
     <DivContainer>
       <RenderFruits list={fruit} dispatch={dispatch} />
-      {/* {fruit.map(item => {
-        return (
-          <FruitItem dispatch={dispatch} key={item.id} id={item.id}>
-            <strong>{item.name}</strong>
-            <div>{item.description}</div>
-          </FruitItem>
-        )
-      })} */}
       <Modal>
         <ModalOpenButton>
           <AddButton>

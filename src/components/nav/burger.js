@@ -4,10 +4,14 @@ import { StyledBurger } from './styles'
 
 function Burger() {
   const [open, setIsOpen] = React.useState(false)
-
+  const handleClick = () => setIsOpen(prev => !prev)
   return (
     <div>
-      <StyledBurger open={open} onClick={() => setIsOpen(!open)}>
+      <StyledBurger
+        open={open}
+        onClick={handleClick}
+        data-testid={`burger-${open}`}
+      >
         <div />
         <div />
         <div />
