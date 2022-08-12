@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useAuth } from './context/auth-provider'
 import styled from 'styled-components'
 import './styles/login-styles.css'
+import { FaRegEyeSlash, FaRegEye } from 'react-icons/fa'
 
 const Div = styled.div`
   height: 100vh;
@@ -26,11 +27,11 @@ const StyledForm = styled.form`
 `
 
 const Button = styled.button`
-  padding: 5px;
+  padding: 7px;
   font-size: 1em;
   text-color: #030303;
   border-radius: 5px;
-  border: none;
+  border: 1px solid gray;
   box-shadow: 3px 3px 13px -7px #000000;
   transition: 0.2s;
 
@@ -44,6 +45,22 @@ const Input = styled.input`
   background: #cddcf5;
   padding: 10px;
   border-radius: 5px;
+  width: 200px;
+`
+
+const PassInput = styled.input`
+  border: none;
+  background: #cddcf5;
+  padding: 10px;
+  border-radius: 5px 0 0 5px;
+  max-height: 35px;
+  width: 170px;
+`
+const Span = styled.span`
+  background: #cddcf5;
+  padding: 8px;
+  border-radius: 0 5px 5px 0;
+  width: 30px;
 `
 
 const Label = styled.label`
@@ -59,13 +76,19 @@ function Login() {
 
   React.useEffect(() => {
     window.history.pushState({}, '', '/home')
-  })
+  }, [])
 
   function handelSubmit(event) {
     setDisabled(true)
     event.preventDefault()
     const { user, password } = event.target.elements
     login(user.value, password.value)
+  }
+
+  // to make the password visible
+  const [visible, setVisible] = React.useState(false)
+  function ver() {
+    setVisible(!visible)
   }
 
   return (
@@ -75,10 +98,26 @@ function Login() {
           <Label style={{ color: 'black' }} htmlFor="user">
             Usuario
           </Label>
-          <Input id="user" required />
+          <Input id="user" type="text" required />
 
           <Label htmlFor="password">Senha</Label>
-          <Input id="password" type="password" required />
+          <div
+            style={{
+              height: '35px',
+              display: 'flex',
+
+              justifyContent: 'center',
+            }}
+          >
+            <PassInput
+              id="password"
+              type={visible ? 'text' : 'password'}
+              required
+            />
+            <Span onClick={ver}>
+              {visible ? <FaRegEye /> : <FaRegEyeSlash />}
+            </Span>
+          </div>
 
           <Button id="button-submit" type="submit" disabled={disabled}>
             Submit

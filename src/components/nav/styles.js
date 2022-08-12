@@ -5,9 +5,9 @@ const Button = styled.button`
   background: ${props => props.theme.theme.colors.nav};
   color: ${props => props.theme.theme.colors.text};
   display: inline-block;
-  margin-right: 10px;
+
   text-decoration: none;
-  padding: 10px;
+  padding: 10px 0 10px 10px;
   font-family: 'Poppins', sans-serif;
   font-size: 1.5em;
   font-weight: 600;
@@ -19,7 +19,7 @@ const Ul = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+
   list-style: none;
   height: 100%;
   line-height: normal;
@@ -87,7 +87,7 @@ const NavB = styled.nav`
   justify-content: space-between;
   height: 60px;
   align-items: center;
-  padding: 30px;
+  padding: 30px 80px;
   background: ${props => props.theme.theme.colors.nav};
 `
 

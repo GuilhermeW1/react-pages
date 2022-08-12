@@ -11,7 +11,7 @@ function ThemeProv({ children }) {
 
   const toggleTheme = React.useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light)
-  }, [theme])
+  }, [theme, setTheme])
 
   return (
     <ThemeProvider theme={{ theme, toggleTheme }}>{children}</ThemeProvider>

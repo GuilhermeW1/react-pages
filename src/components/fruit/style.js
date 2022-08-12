@@ -3,7 +3,7 @@ import { FaSpinner } from 'react-icons/fa'
 const Div = styled.div`
   height: 200px;
   width: 25vw;
-  margin: 10px;
+  margin: 0;
   border: 1px solid green;
   text-align: center;
   padding: 10px;

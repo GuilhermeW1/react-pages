@@ -29,7 +29,7 @@ const DivContainer = styled.div`
   grid-template-columns: auto auto auto;
   gap: 1em;
 
-  justify-content: space-evenly;
+  justify-content: space-between;
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
   flex-wrap: wrap;

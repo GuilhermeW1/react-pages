@@ -18,7 +18,7 @@ function AuthProvider({ children }) {
   const logout = React.useCallback(() => {
     window.localStorage.removeItem(localStorageKey)
     setUser(null)
-  })
+  }, [])
 
   React.useEffect(() => {
     const user = window.localStorage.getItem(localStorageKey)
@@ -27,7 +27,7 @@ function AuthProvider({ children }) {
       setUser(userObj.user)
     }
     return
-  })
+  }, [])
 
   return (
     <AuthContext.Provider value={{ logout, login, user }}>

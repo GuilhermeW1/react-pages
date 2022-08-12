@@ -50,6 +50,7 @@ function Authenticated() {
 
 const Main = styled.main`
   margin-top: 5em;
+  padding: 0 80px;
 `
 
 function ErrorFallback({ error, resetErrorBoundary }) {

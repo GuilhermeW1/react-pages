@@ -6,16 +6,12 @@ import userEvent from '@testing-library/user-event'
 import { render } from '../../../test/utlils'
 import { Modal, ModalOpenButton, ModalContent, useModal } from '../index'
 
-beforeAll(() => {
+beforeEach(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 })
 
-afterAll(() => {
-  console.error.mockRestore()
-})
-
 afterEach(() => {
-  jest.clearAllMocks()
+  console.error.mockRestore()
 })
 
 function Test() {
@@ -26,7 +22,7 @@ function Test() {
 test('use modal out Modal throw an error', () => {
   expect(() => {
     render(<Test />)
-  }).toThrow('useModal have to be used With modal')
+  }).toThrowError('useModal have to be used With modal')
 })
 
 test('use modal return context', () => {

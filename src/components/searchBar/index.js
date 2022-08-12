@@ -4,8 +4,8 @@ import { BsSearch } from 'react-icons/bs'
 import { Div, Form, Input, DivSearch, Button, DivSearched } from './styles'
 
 function SearchBar() {
-  const [list] = useList()
   const [searchWord, setSearch] = React.useState('')
+  const [list] = useList()
 
   const handleSearch = e => {
     e.preventDefault()
